@@ -50,3 +50,69 @@ CREATE TABLE branch_supplier (
   PRIMARY KEY(branch_id, supplier_name),
   FOREIGN KEY(branch_id) REFERENCES branch(branch_id) ON DELETE CASCADE
 );
+
+-- Aerospace
+INSERT INTO employee VALUES(100, 'Willam', 'Thomas', '1961-05-11', 'M', 110000, NULL, NULL);
+
+INSERT INTO branch VALUES(1, 'Aerospace', 100, '2006-02-09');
+
+UPDATE employee
+SET branch_id = 1
+WHERE Emp_id = 100;
+
+INSERT INTO employee VALUES(101, 'Preethi', 'Agarwal', '1964-03-15', 'F', 75000, 100, 1);
+
+
+-- Cybersecurity
+INSERT INTO employee VALUES(102, 'Edward', 'James', '1969-09-05', 'M', 78000, 100, NULL);
+
+INSERT INTO branch VALUES(2, 'Cybersecurity', 102, '1992-04-06');
+
+UPDATE employee
+SET branch_id = 2
+WHERE Emp_id = 102;
+
+INSERT INTO employee VALUES(103, 'Ravi', 'Kumar', '1971-06-25', 'M', 63000, 102, 2);
+INSERT INTO employee VALUES(104, 'Vijaya', 'Kumari', '1973-07-22', 'F', 65000, 102, 2);
+INSERT INTO employee VALUES(105, 'Steve', 'Jobs', '1955-02-24', 'M', 87000, 102, 2);
+
+-- DevOps
+INSERT INTO employee VALUES(106, 'Michael', 'Jackson', '1958-08-29', 'M', 56000, 100, NULL);
+
+INSERT INTO branch VALUES(3, 'DevOps', 106, '1998-02-13');
+
+UPDATE employee
+SET branch_id = 3
+WHERE Emp_id = 106;
+
+INSERT INTO employee VALUES(107, 'Angela', 'Martin', '1971-06-25', 'F', 85000, 106, 3);
+INSERT INTO employee VALUES(108, 'Harry', 'Porter', '1980-07-31', 'M', 71000, 106, 3);
+
+-- BRANCH SUPPLIER
+INSERT INTO branch_supplier VALUES(2, 'Hammer Mill', 'Paper');
+INSERT INTO branch_supplier VALUES(2, 'Uni-ball', 'Writing Utensils');
+INSERT INTO branch_supplier VALUES(3, 'Patriot Paper', 'Paper');
+INSERT INTO branch_supplier VALUES(2, 'J.T. Forms & Labels', 'Custom Forms');
+INSERT INTO branch_supplier VALUES(3, 'Uni-ball', 'Writing Utensils');
+INSERT INTO branch_supplier VALUES(3, 'Hammer Mill', 'Paper');
+INSERT INTO branch_supplier VALUES(3, 'Stamford Lables', 'Custom Forms');
+
+-- CLIENT
+INSERT INTO client VALUES(400, 'Dunmore Highschool', 2);
+INSERT INTO client VALUES(401, 'Lackawana Country', 2);
+INSERT INTO client VALUES(402, 'FedEx', 3);
+INSERT INTO client VALUES(403, 'John Daly Law, LLC', 3);
+INSERT INTO client VALUES(404, 'Scranton Whitepages', 2);
+INSERT INTO client VALUES(405, 'Times Newspaper', 3);
+INSERT INTO client VALUES(406, 'FedEx', 2);
+
+-- WORKS_WITH
+INSERT INTO works_with VALUES(105, 400, 55000);
+INSERT INTO works_with VALUES(102, 401, 267000);
+INSERT INTO works_with VALUES(108, 402, 22500);
+INSERT INTO works_with VALUES(107, 403, 5000);
+INSERT INTO works_with VALUES(108, 403, 12000);
+INSERT INTO works_with VALUES(105, 404, 33000);
+INSERT INTO works_with VALUES(107, 405, 26000);
+INSERT INTO works_with VALUES(102, 406, 15000);
+INSERT INTO works_with VALUES(105, 406, 130000);

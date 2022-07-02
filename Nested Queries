@@ -1,0 +1,14 @@
+-- Find names of all employees who have sold over 50,000
+SELECT employee.First_name, employee.Last_name
+FROM employee
+WHERE employee.Emp_id IN (SELECT works_with.Emp_id
+                          FROM works_with
+                          WHERE works_with.total_sales > 50000);
+
+-- Find all clients who are handles by the branch that Edward James manages
+-- Assume you know Edward's ID
+SELECT client.client_id, client.client_name
+FROM client
+WHERE client.branch_id = (SELECT branch.branch_id
+                          FROM branch
+                          WHERE branch.mgr_id = 102);

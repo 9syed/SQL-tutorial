@@ -1,0 +1,47 @@
+CREATE TABLE trigger_test (
+     message VARCHAR(100)
+);
+
+
+DELIMITER $$
+CREATE
+    TRIGGER my_trigger BEFORE INSERT
+    ON employee
+    FOR EACH ROW BEGIN
+        INSERT INTO trigger_test VALUES('Added new employee');
+    END$$
+DELIMITER ;
+INSERT INTO employee
+VALUES(109, 'Benjamin', 'Franklin', '1706-01-17', 'M', 69000, 106, 3);
+
+
+DELIMITER $$
+CREATE
+    TRIGGER my_trigger1 BEFORE INSERT
+    ON employee
+    FOR EACH ROW BEGIN
+        INSERT INTO trigger_test VALUES(NEW.First_name);
+    END$$
+DELIMITER ;
+INSERT INTO employee
+VALUES(110, 'Jim', 'Halpert', '1978-10-01', 'M', 69000, 106, 3);
+
+DELIMITER $$
+CREATE
+    TRIGGER my_trigger2 BEFORE INSERT
+    ON employee
+    FOR EACH ROW BEGIN
+         IF NEW.Gender = 'M' THEN
+               INSERT INTO trigger_test VALUES('Added male employee');
+         ELSEIF NEW.Gender = 'F' THEN
+               INSERT INTO trigger_test VALUES('Added female');
+         ELSE
+               INSERT INTO trigger_test VALUES('Added other employee');
+         END IF;
+    END$$
+DELIMITER ;
+INSERT INTO employee
+VALUES(111, 'Pam', 'Beesly', '1988-02-19', 'F', 69000, 106, 3);
+
+-- Command for Deleting Trigger
+DROP TRIGGER my_trigger;
